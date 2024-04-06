@@ -32,7 +32,7 @@ class exts(commands.Cog):
         
     @commands.command()
     @commands.is_owner()
-    async def unload(self, ctx, command: str):
+    async def unload(self, ctx, type: str, command: str):
         if settings.ServerID == ctx.guild.id:
             if type == "cog":
                 type = "cogs"
