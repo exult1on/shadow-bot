@@ -6,7 +6,7 @@ from discord import app_commands
 
 class unverify(commands.Cog):
 
-    def __init__(self, bot):
+    def __init__(self, bot: commands.Bot):
         self.bot = bot
 
     @app_commands.command(name = "unverify", description = "Unverify your Roblox account")
@@ -38,4 +38,4 @@ class unverify(commands.Cog):
             await logs_channel.send(content="**{0}** tried to use the 'unverified' command and they were not verified" .format(interaction.user.name))
 
 async def setup(bot):
-    bot.add_cog(unverify(bot))
+    await bot.add_cog(unverify(bot))

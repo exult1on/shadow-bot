@@ -13,7 +13,7 @@ from roblox.utilities.exceptions import UserNotFound
 
 class verify(commands.Cog):
 
-    def __init__(self, bot):
+    def __init__(self, bot: commands.Bot):
         self.bot = bot
 
     @app_commands.command(name = "verify", description = "Verify your Roblox account")

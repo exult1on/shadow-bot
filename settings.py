@@ -17,15 +17,26 @@ JSON_DIR = BASE_DIR / "verified.json"
 # Server IDs
 ServerID = 740209431387701428
 Logs_Channel = 1220779980938543174
+Welcome_Channel = 841770111391629392
 ServerMSG_Channel = 740220101428772864
 
 # Role IDs
+role_admin = 776464568901304370
 role_verified = 933285009102622800
 role_unverified = 933396416305455135
+
+# Role list
+AcceptRoles = [
+    740209774016331807,  # Shadow
+    1193194473459548320  # Bandit
+]
 
 # Roblox
 roblox = Client(ROBLOX_TOKEN)
 GroupID = 8341068
+
+# Emoji IDs
+AcceptEmoji = 928733132771950642
 
 # Colours
 BootEmbed = 0x234633
