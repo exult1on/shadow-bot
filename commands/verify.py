@@ -19,7 +19,7 @@ class Buttons(View):   #!   Buttons
 
     @discord.ui.button(label="Done", style=discord.ButtonStyle.green, custom_id="done")
     async def done_button(self, interaction: discord.Interaction, button: discord.ui.Button):
-        logs_channel = interaction.guild.get_channel(settings.Logs_Channel)
+        # logs_channel = interaction.guild.get_channel(settings.Logs_Channel)
         with open(settings.JSON_DIR) as f:
             verified = json.load(f)
 
@@ -58,13 +58,13 @@ class Buttons(View):   #!   Buttons
             verdict = "failed"
 
         await interaction.response.edit_message(view=self, embed=self.embed)
-        await logs_channel.send("**{0}**'s verification process has {1}" .format(self.discordUser.name, verdict))
+        # await logs_channel.send("**{0}**'s verification process has {1}" .format(self.discordUser.name, verdict))
 
 @app_commands.command(name = "verify", description = "Verify your Roblox account")
 @app_commands.guilds(settings.ServerID)
 @app_commands.describe(roblox_user = "The username of the account you want to verify with")
 async def verify(interaction: discord.Interaction, roblox_user: str):
-    logs_channel = interaction.guild.get_channel(settings.Logs_Channel)
+    # logs_channel = interaction.guild.get_channel(settings.Logs_Channel)
     with open(settings.JSON_DIR) as f:
         verified = json.load(f)
     user_id_string = str(interaction.user.id)
@@ -72,8 +72,8 @@ async def verify(interaction: discord.Interaction, roblox_user: str):
     if user_id_string in verified:
         roblox_verified = await roblox.get_user(verified[user_id_string])
         await interaction.response.send_message(content="Already verified with the account of **{0} ({1})**" .format(roblox_verified.name, roblox_verified.id), ephemeral=True)
-        await logs_channel.send(content="**{0}** tried to start the verification process while verified"
-                                .format(interaction.user.name))
+        # await logs_channel.send(content="**{0}** tried to start the verification process while verified"
+        #                         .format(interaction.user.name))
     else:
         try:
             user = await roblox.get_user_by_username(roblox_user)
@@ -91,11 +91,11 @@ async def verify(interaction: discord.Interaction, roblox_user: str):
 
             view = Buttons(interaction.user, user.id, randwords, embed)
             await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
-            await logs_channel.send(content="**{0}** started the verification process" .format(interaction.user.name))
+            # await logs_channel.send(content="**{0}** started the verification process" .format(interaction.user.name))
 
         except UserNotFound:
             await interaction.response.send_message(content="Invalid username.", ephemeral=True)
-            await logs_channel.send(content="**{0}** tried to start the verification process with an invalid username" .format(interaction.user.name))
+            # await logs_channel.send(content="**{0}** tried to start the verification process with an invalid username" .format(interaction.user.name))
 
 async def setup(bot):
     bot.tree.add_command(verify)
