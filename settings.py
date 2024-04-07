@@ -42,4 +42,4 @@ AcceptEmoji = 928733132771950642
 BootEmbed = 0x234633
 
 # Command IDs
-VerifyCommandID = 000
+VerifyCommandID = 1223685053146468415

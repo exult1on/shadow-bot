@@ -1,4 +1,5 @@
 import settings
+import importlib
 from discord.ext import commands
 
 def guildcheck(ctx):
@@ -12,17 +13,17 @@ class exts(commands.Cog):
     @commands.command()
     @commands.is_owner()
     @commands.check(guildcheck)
-    async def load(self, ctx, type: str, command: str):
-        if type == "cog":
+    async def load(self, ctx, ext: str, command: str):
+        if ext == "cog":
             type = "cogs"
-        elif type == "command":
+        elif ext == "command":
             type = "commands"
         else:
             await ctx.send(f"Unexpected type")
 
         try:
             await self.bot.load_extension(f"{type}.{command}")
-            await ctx.send(f"The {command} {type} has been loaded")
+            await ctx.send(f"The {command} {ext} has been loaded")
             print(f"{command}.py loaded")
 
         except commands.ExtensionNotFound:
@@ -30,30 +31,31 @@ class exts(commands.Cog):
 
         except commands.ExtensionAlreadyLoaded:
             await self.bot.reload_extension(f"{type}.{command}")
-            await ctx.send(f"The {command} {type} already loaded, reloading")
+            await ctx.send(f"The {command} {ext} already loaded, reloading")
             print(f"{command}.py reloaded")
         
     @commands.command()
     @commands.is_owner()
     @commands.check(guildcheck)
-    async def unload(self, ctx, type: str, command: str):
+    async def unload(self, ctx, ext: str, command: str):
         if command == "ext_mng":
             await ctx.send(f"Can't unload the extension manager or the bot will be softlocked, try reloading")
         else:
-            if type == "cog":
+            if ext == "cog":
                 type = "cogs"
-            elif type == "command":
+            elif ext == "command":
                 type = "commands"
             else:
                 await ctx.send(f"Unexpected type")
 
             try:
                 await self.bot.unload_extension(f"{type}.{command}")
-                await ctx.send(f"The {command} {type} has been unloaded")
+                await ctx.send(f"The {command} {ext} has been unloaded")
                 print(f"{command}.py unloaded")
 
             except commands.ExtensionNotLoaded:
-                await ctx.send(f"The {command} {type} is not loaded")
+                await ctx.send(f"The {command} {ext} is not loaded")
         
 async def setup(bot):
     await bot.add_cog(exts(bot))
+    importlib.reload(settings)

@@ -1,6 +1,7 @@
 import json
 import discord
 import settings
+import importlib
 from discord.ext import commands
 from discord import app_commands
 
@@ -39,3 +40,4 @@ class unverify(commands.Cog):
 
 async def setup(bot):
     await bot.add_cog(unverify(bot))
+    importlib.reload(settings)
