@@ -75,3 +75,4 @@ class accept(commands.Cog):
 async def setup(bot):
     await bot.add_cog(accept(bot))
     importlib.reload(uis.accept_modal)
+    importlib.reload(settings)

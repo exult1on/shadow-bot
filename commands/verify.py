@@ -56,3 +56,4 @@ class verify(commands.Cog):
 async def setup(bot):
     await bot.add_cog(verify(bot))
     importlib.reload(uis.ver_button)
+    importlib.reload(settings)

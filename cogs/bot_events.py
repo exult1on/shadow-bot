@@ -2,6 +2,7 @@ import json
 import discord
 import settings
 import datetime
+import importlib
 from settings import roblox
 from discord.ext import commands
 from roblox import AvatarThumbnailType
@@ -72,3 +73,4 @@ class listeners(commands.Cog):
 
 async def setup(bot):
     await bot.add_cog(listeners(bot))
+    importlib.reload(settings)

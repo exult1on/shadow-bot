@@ -1,4 +1,5 @@
 import settings
+import importlib
 from discord.ext import commands
 
 def guildcheck(ctx):
@@ -57,3 +58,4 @@ class exts(commands.Cog):
         
 async def setup(bot):
     await bot.add_cog(exts(bot))
+    importlib.reload(settings)
