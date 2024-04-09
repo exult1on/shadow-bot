@@ -1,6 +1,7 @@
 import json
 import words
 import random
+import asyncio
 import discord
 import settings
 import datetime
@@ -44,10 +45,15 @@ class verify(commands.Cog):
                 embed.add_field(
                     name="**Verification code**",
                     value="`{0}`" .format(randwords))
+                embed.set_footer(text="Button will become functional in 15 seconds. Read ^^^")
 
                 view = uis.ver_button.Buttons(interaction.user, user.id, randwords, embed, self.bot)
                 await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
                 await logs_channel.send(content="**{0}** started the verification process" .format(interaction.user.name))
+                await asyncio.sleep(15)
+                embed.set_footer(text=None)
+                view.done_button.disabled = False
+                await interaction.edit_original_response(embed=embed, view=view)
 
             except UserNotFound:
                 await interaction.response.send_message(content="Invalid username.", ephemeral=True)

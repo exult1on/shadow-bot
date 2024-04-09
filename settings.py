@@ -16,12 +16,14 @@ JSON_DIR = BASE_DIR / "verified.json"
 
 # Server IDs
 ServerID = 740209431387701428
+Bot_Channel = 884059197258485840
 Logs_Channel = 1220779980938543174
 Welcome_Channel = 841770111391629392
 ServerMSG_Channel = 740220101428772864
 
 # Role IDs
 role_admin = 776464568901304370
+role_ranked = 740209774016331807
 role_verified = 933285009102622800
 role_unverified = 933396416305455135
 
