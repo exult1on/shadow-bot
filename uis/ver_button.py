@@ -13,7 +13,7 @@ class Buttons(View):   #!   Buttons
         self.embed = embed
         self.bot = bot
 
-    @discord.ui.button(label="Done", style=discord.ButtonStyle.green, custom_id="done")
+    @discord.ui.button(label="Done", style=discord.ButtonStyle.green, custom_id="done", disabled=True)
     async def done_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         logs_channel = self.bot.get_channel(settings.Logs_Channel)
         with open(settings.JSON_DIR) as f:

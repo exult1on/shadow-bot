@@ -26,6 +26,7 @@ class accept(commands.Cog):
         command_use = "**{0}** used the 'accept' command with **{1}**, and they" .format(interaction.user.name, user.name)
 
         if user_id_string in verified:
+            modal = False
             roblox_user = await roblox.get_user(verified[user_id_string])
             roblox_user_roles = await roblox_user.get_group_roles()
             join_request = await group.get_join_request(roblox_user)

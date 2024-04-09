@@ -12,7 +12,7 @@ class listeners(commands.Cog):
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot
-    
+
     @commands.Cog.listener()
     async def on_member_remove(self, member: discord.Member):
         with open(settings.JSON_DIR) as f:
