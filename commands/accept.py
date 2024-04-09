@@ -52,8 +52,19 @@ class accept(commands.Cog):
             if modal != True:
                 await logs_channel.send(" ".join([command_use, user_check]))
         else:
-            await interaction.response.send_message(content="User is not verified", ephemeral=True)
-            user_check = "were not verified"
+            verify_channel = interaction.guild.get_channel(settings.Verify_Channel)
+            role_verified = interaction.guild.get_role(settings.role_verified)
+            role_unverified = interaction.guild.get_role(settings.role_unverified)
+            user_check = "were not verified, requested a re-verify"
+
+            if role_verified in user.roles:
+                await user.remove_roles(role_verified)
+            if role_unverified not in user.roles:
+                await user.add_roles(role_unverified)
+            await user.edit(nick="")
+
+            await verify_channel.send("{0} Please re-verify with the </verify:{1}> command" .format(user.mention, settings.VerifyCommandID))
+            await interaction.response.send_message(content="User is not verified, requested a re-verify", ephemeral=True)
             await logs_channel.send(" ".join([command_use, user_check]))
 
     @app_commands.command(name = "accept", description = "Accept a verified user into the group")
