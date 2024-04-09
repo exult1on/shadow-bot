@@ -23,6 +23,7 @@ ServerMSG_Channel = 740220101428772864
 
 # Role IDs
 role_admin = 776464568901304370
+role_ranked = 740209774016331807
 role_verified = 933285009102622800
 role_unverified = 933396416305455135
 

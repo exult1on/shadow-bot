@@ -19,14 +19,17 @@ class unverify(commands.Cog):
         user_id_string = str(interaction.user.id)
 
         if user_id_string in verified:
+            role_ranked = interaction.guild.get_role(settings.role_ranked)
             role_verified = interaction.guild.get_role(settings.role_verified)
             role_unverified = interaction.guild.get_role(settings.role_unverified)
 
             verified.pop(user_id_string)
 
+            if role_ranked not in interaction.user.roles:
+                await interaction.user.edit(nick="")
+
             await interaction.user.remove_roles(role_verified)
             await interaction.user.add_roles(role_unverified)
-            await interaction.user.edit(nick="")
             await interaction.response.send_message(content="Verification removed properly", ephemeral=True)
             await logs_channel.send(content="**{0}** tried to use the 'unverified' command and their verification was removed" .format(interaction.user.name))
 

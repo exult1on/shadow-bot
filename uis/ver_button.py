@@ -24,8 +24,9 @@ class Buttons(View):   #!   Buttons
 
         if roblox_user.description == self.randwords:
             verified.update({self.discordUser.id: roblox_user.id})
-            role_unverified = interaction.guild.get_role(settings.role_unverified)
+            role_ranked = interaction.guild.get_role(settings.role_ranked)
             role_verified = interaction.guild.get_role(settings.role_verified)
+            role_unverified = interaction.guild.get_role(settings.role_unverified)
             if roblox_user.display_name == roblox_user.name:
                 verified_name = "{0}" .format(roblox_user.name)
             else:
@@ -44,7 +45,9 @@ class Buttons(View):   #!   Buttons
 
             await self.discordUser.remove_roles(role_unverified)
             await self.discordUser.add_roles(role_verified)
-            # await self.discordUser.edit(nick=verified_name)
+
+            if role_ranked not in self.discordUser.roles:
+                await self.discordUser.edit(nick=verified_name)
         else:
             self.embed.title="Verification failed."
             self.embed.description="Please retry the `/verify` command"
