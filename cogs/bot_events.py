@@ -72,5 +72,5 @@ class listeners(commands.Cog):
         await channel.send("{0} joined the server" .format(member.mention))
 
 async def setup(bot):
-    await bot.add_cog(listeners(bot))
     importlib.reload(settings)
+    await bot.add_cog(listeners(bot))

@@ -85,6 +85,6 @@ class accept(commands.Cog):
         await accept.accept(self, interaction, message.author, message)
 
 async def setup(bot):
-    await bot.add_cog(accept(bot))
     importlib.reload(uis.accept_modal)
     importlib.reload(settings)
+    await bot.add_cog(accept(bot))

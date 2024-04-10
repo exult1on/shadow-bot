@@ -57,5 +57,5 @@ class exts(commands.Cog):
                 await ctx.send(f"The {command} {ext} is not loaded")
         
 async def setup(bot):
-    await bot.add_cog(exts(bot))
     importlib.reload(settings)
+    await bot.add_cog(exts(bot))
