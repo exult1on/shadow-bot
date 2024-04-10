@@ -44,13 +44,7 @@ class verify(commands.Cog):
                     color=interaction.user.color)
                 embed.add_field(
                     name="**Verification code**",
-                    value="`{0}`" .format(randwords),
-                    inline=False)
-                embed.add_field(
-                    name="Link to your Roblox profile",
-                    value="https://www.roblox.com/users/{0}/profile"
-                    .format(user.id),
-                    inline=False)
+                    value="`{0}`" .format(randwords))
                 embed.set_footer(text="Button will become functional in 15 seconds. Read ^^^")
 
                 view = uis.ver_button.Buttons(interaction.user, user.id, randwords, embed, self.bot)
@@ -66,6 +60,6 @@ class verify(commands.Cog):
                 await logs_channel.send(content="**{0}** tried to start the verification process with an invalid username" .format(interaction.user.name))
 
 async def setup(bot):
-    await bot.add_cog(verify(bot))
     importlib.reload(uis.ver_button)
     importlib.reload(settings)
+    await bot.add_cog(verify(bot))
