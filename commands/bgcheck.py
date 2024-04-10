@@ -142,5 +142,5 @@ class bgcheck(commands.Cog):
         await bgcheck.bgcheck(self, interaction, user, None)
 
 async def setup(bot):
-    await bot.add_cog(bgcheck(bot))
     importlib.reload(settings)
+    await bot.add_cog(bgcheck(bot))

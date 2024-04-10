@@ -42,5 +42,5 @@ class unverify(commands.Cog):
             await logs_channel.send(content="**{0}** tried to use the 'unverified' command and they were not verified" .format(interaction.user.name))
 
 async def setup(bot):
-    await bot.add_cog(unverify(bot))
     importlib.reload(settings)
+    await bot.add_cog(unverify(bot))

@@ -12,6 +12,7 @@ class Buttons(View):   #!   Buttons
         self.randwords = randwords
         self.embed = embed
         self.bot = bot
+        self.add_item(discord.ui.Button(label="Roblox Profile", url=f"https://www.roblox.com/users/{self.robloxId}/profile"))
 
     @discord.ui.button(label="Done", style=discord.ButtonStyle.green, custom_id="done", disabled=True)
     async def done_button(self, interaction: discord.Interaction, button: discord.ui.Button):

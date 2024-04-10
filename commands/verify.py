@@ -60,6 +60,6 @@ class verify(commands.Cog):
                 await logs_channel.send(content="**{0}** tried to start the verification process with an invalid username" .format(interaction.user.name))
 
 async def setup(bot):
-    await bot.add_cog(verify(bot))
     importlib.reload(uis.ver_button)
     importlib.reload(settings)
+    await bot.add_cog(verify(bot))
