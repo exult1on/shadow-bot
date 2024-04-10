@@ -44,7 +44,13 @@ class verify(commands.Cog):
                     color=interaction.user.color)
                 embed.add_field(
                     name="**Verification code**",
-                    value="`{0}`" .format(randwords))
+                    value="`{0}`" .format(randwords),
+                    inline=False)
+                embed.add_field(
+                    name="Link to your Roblox profile",
+                    value="https://www.roblox.com/users/{0}/profile"
+                    .format(user.id),
+                    inline=False)
                 embed.set_footer(text="Button will become functional in 15 seconds. Read ^^^")
 
                 view = uis.ver_button.Buttons(interaction.user, user.id, randwords, embed, self.bot)
