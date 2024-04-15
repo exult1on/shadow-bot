@@ -37,7 +37,7 @@ class verify(commands.Cog):
                 randwords = " ".join(random.choices(words.wordlist, k=10))
 
                 embed = discord.Embed(
-                    title="Discord-Roblox veification initiated",
+                    title="Discord-Roblox verification initiated",
                     description="Hello **{0}**, you started your verification process for the **{1}** account. Please paste the code from the field below into your Roblox account description."
                                 .format(interaction.user.display_name, user.name),
                     timestamp=datetime.datetime.now(),
