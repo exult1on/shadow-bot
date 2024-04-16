@@ -46,4 +46,4 @@ BootEmbed = 0x234633
 
 # Command IDs
 VerifyCommandID = 1223685053146468415
-ReverifyCommandID = 000 # placeholder
+ReverifyCommandID = 1229709123394867201
