@@ -44,8 +44,12 @@ class verify(commands.Cog):
                     color=interaction.user.color)
                 embed.add_field(
                     name="**Verification code**",
-                    value="`{0}`" .format(randwords))
-                embed.set_footer(text="Button will become functional in 15 seconds. Read ^^^")
+                    value="`{0}`" .format(randwords),
+                    inline=False)
+                embed.add_field(
+                    name="After changing your Roblox description, please click the button labled \"Done\" down below.",
+                    value="")
+                embed.set_footer(text="Button will become functional after 15 seconds. Read ^^^")
 
                 view = uis.ver_button.Buttons(interaction.user, user.id, randwords, embed, self.bot)
                 await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
