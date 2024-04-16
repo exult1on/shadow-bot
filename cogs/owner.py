@@ -52,6 +52,19 @@ class owner(commands.Cog):
                     
             await ctx.send("User unverification removed properly")
 
+    @commands.command()
+    @commands.is_owner()
+    @commands.check(guildcheck)
+    async def isverified(self, ctx: commands.Context, discordid: int):
+        with open(settings.JSON_DIR) as f:
+            verified = json.load(f)
+        user_id_string = str(discordid)
+
+        if user_id_string in verified:
+            await ctx.send("Verified")
+        else:
+            await ctx.send("Not verified")
+
 async def setup(bot):
     importlib.reload(settings)
     await bot.add_cog(owner(bot))
