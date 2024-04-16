@@ -41,7 +41,7 @@ class reverify(commands.Cog):
         if role_ranked not in user.roles:
             await user.edit(nick="")
 
-        await verify_channel.send("{0} Please re-verify with the </verify:{1}> command" .format(user.mention, settings.VerifyCommandID))
+        await verify_channel.send("{0} Please re-verify using the </verify:{1}> command and follow the instructions in the message." .format(user.mention, settings.VerifyCommandID))
         await interaction.response.send_message(content="Requested a re-verify on **{0}**"
                                                 .format(user.mention),
                                                 ephemeral=True)

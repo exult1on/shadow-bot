@@ -63,7 +63,7 @@ class accept(commands.Cog):
                 await user.add_roles(role_unverified)
             await user.edit(nick="")
 
-            await verify_channel.send("{0} Please re-verify with the </verify:{1}> command" .format(user.mention, settings.VerifyCommandID))
+            await verify_channel.send("{0} Please re-verify using the </verify:{1}> command and follow the instructions in the message." .format(user.mention, settings.VerifyCommandID))
             await interaction.response.send_message(content="User is not verified, requested a re-verify", ephemeral=True)
             await logs_channel.send(" ".join([command_use, user_check]))
 
