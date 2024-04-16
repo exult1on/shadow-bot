@@ -39,7 +39,7 @@ class Buttons(View):   #!   Buttons
                                     separators=(',',': '))
 
             self.embed.title="Verification succeeded!"
-            self.embed.description="You are now verified with The Shadow"
+            self.embed.description="You are now verified with The Shadow\nYou can now remove the verification code from your description and set it to whatever you want it to be."
             self.embed.clear_fields()
             self.embed.color=0x234633
             verdict = "succeded"
