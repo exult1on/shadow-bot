@@ -23,7 +23,7 @@ class Buttons(View):   #!   Buttons
         roblox_user = await roblox.get_user(self.robloxId)
         button.disabled = True
 
-        if roblox_user.description == self.randwords:
+        if self.randwords in roblox_user.description:
             verified.update({self.discordUser.id: roblox_user.id})
             role_ranked = interaction.guild.get_role(settings.role_ranked)
             role_verified = interaction.guild.get_role(settings.role_verified)
