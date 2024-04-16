@@ -5,7 +5,7 @@ from discord.ext import commands
 from typing import Literal, Optional
 
 intents = discord.Intents.all()
-bot = commands.Bot(command_prefix='!', intents=intents)
+bot = commands.Bot(command_prefix='!', intents=intents, help_command=None)
 
 if path.isfile(settings.JSON_DIR) is False:
     raise Exception("\n\nFile not found\n")
