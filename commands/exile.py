@@ -48,7 +48,7 @@ class exile(commands.Cog):
         if roblox_user == None:
             await interaction.response.send_message(content=errorMsg, ephemeral=True)
             await logs_channel.send(" " .join([command_use, verdict]))
-            
+
         else:
             await interaction.response.send_message("User found, exiling...", ephemeral=True)
 
@@ -83,10 +83,10 @@ class exile(commands.Cog):
                 if roles_to_remove:
                     response += "\nRemoved roles: {0}from the user" .format(roles_removed)
                 response += "\nChanged the user's name to their Roblox username"
-            
+
             await interaction.edit_original_response(content=response)
             await logs_channel.send(" " .join([command_use, verdict]))
-    
+
     @app_commands.command(name = "exile", description = "Exile a user from the group")
     @app_commands.guilds(settings.ServerID)
     @app_commands.checks.has_role(settings.role_admin)

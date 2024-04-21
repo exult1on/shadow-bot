@@ -12,7 +12,7 @@ class reverify(commands.Cog):
         self.ctx_user_menu = app_commands.ContextMenu(name="Reverify user", callback=self.reverify_context_user)
 
         self.bot.tree.add_command(self.ctx_user_menu)
-    
+
     async def reverify(self, interaction: discord.Interaction, user: discord.Member):
         logs_channel = self.bot.get_channel(settings.Logs_Channel)
         command_use = "**{0}** requested a re-verify on **{1}**" .format(interaction.user.name, user.name)

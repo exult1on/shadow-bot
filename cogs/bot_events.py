@@ -30,7 +30,7 @@ class listeners(commands.Cog):
                     type=AvatarThumbnailType.headshot,
                     size=(420, 420))
                 user_thumbnail = user_thumbnails[0]
-                
+
                 embed = discord.Embed(
                     description="User left, kicked them from the Roblox group",
                     timestamp=datetime.datetime.now(),
