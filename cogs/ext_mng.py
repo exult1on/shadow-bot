@@ -33,7 +33,7 @@ class exts(commands.Cog):
             await self.bot.reload_extension(f"{type}.{command}")
             await ctx.send(f"The {command} {ext} already loaded, reloading")
             print(f"{command}.py reloaded")
-        
+
     @commands.command()
     @commands.is_owner()
     @commands.check(guildcheck)

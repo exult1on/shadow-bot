@@ -49,7 +49,7 @@ class owner(commands.Cog):
                     json.dump(verified, json_file,
                                         indent=4,
                                         separators=(',',': '))
-                    
+
             await ctx.send("User unverification removed properly")
 
     @commands.command()

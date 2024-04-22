@@ -12,25 +12,25 @@ class islands(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
-    @app_commands.command(name = "island", description = "Get information about the current amount of players on NORTHWIND islands")
+    @app_commands.command(name = "islands", description = "Get information about the current amount of players on NORTHWIND islands")
     @app_commands.guilds(settings.ServerID)
-    @app_commands.describe(islands="Islands to choose from")
-    @app_commands.choices(islands=[
+    @app_commands.describe(island="Islands to choose from")
+    @app_commands.choices(island=[
         discord.app_commands.Choice(name="Rupert", value=1),
         discord.app_commands.Choice(name="Cantermagne", value=2),
         discord.app_commands.Choice(name="Stonemore", value=3),
         discord.app_commands.Choice(name="Ellesmere", value=4),
         discord.app_commands.Choice(name="Beauval", value=5)
         ])
-    async def islands(self, interaction: discord.Interaction, islands: discord.app_commands.Choice[int]):
+    async def islands(self, interaction: discord.Interaction, island: discord.app_commands.Choice[int]):
         logs_channel = self.bot.get_channel(settings.Logs_Channel)
-        if islands.value == 1:
+        if island.value == 1:
             islandId = 5465507265
-        elif islands.value == 2:
+        elif island.value == 2:
             islandId = 5620237741
-        elif islands.value == 3:
+        elif island.value == 3:
             islandId = 6249721735
-        elif islands.value == 4:
+        elif island.value == 4:
             islandId = 5620227713
         else:
             islandId = 5620237900
@@ -53,7 +53,7 @@ class islands(commands.Cog):
                 name="Server {0}" .format(servers_island),
                 value="Player count: {0}\nPing (Europe): {1}\nAverage FPS: {2}" .format(server.playing, server.ping, round(server.fps, 1)),
                 inline=True)
-            
+
         embed.description = "Total player count: {0}\nAmount of servers: {1}" .format(playing_island, servers_island)
 
         embed.set_footer(
