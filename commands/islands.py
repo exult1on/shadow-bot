@@ -38,7 +38,7 @@ class islands(commands.Cog):
         place = roblox.get_base_place(islandId)
 
         embed = discord.Embed(
-            title=islands.name,
+            title=island.name,
             url="https://www.roblox.com/games/{0}" .format(islandId),
             timestamp=datetime.datetime.now(),
             color=0x002C3C)
@@ -63,12 +63,12 @@ class islands(commands.Cog):
         if servers_island == 25:
             user = await self.bot.fetch_user(836977956261330944)
             await user.send("{0} reached {1} servers, you should probably increase the api request"
-                        .format(islands.name, len(servers_island)))
+                        .format(island.name, len(servers_island)))
 
         if interaction.channel.id == settings.Bot_Channel:
-            await interaction.response.send_message(content="There are currently {0} players active on {1}" .format(playing_island, islands.name), embed=embed)
+            await interaction.response.send_message(content="There are currently {0} players active on {1}" .format(playing_island, island.name), embed=embed)
         else:
-            await interaction.response.send_message(content="There are currently {0} players active on {1}" .format(playing_island, islands.name), embed=embed, ephemeral=True)
+            await interaction.response.send_message(content="There are currently {0} players active on {1}" .format(playing_island, island.name), embed=embed, ephemeral=True)
         await logs_channel.send("**{0}** used the 'islands' command"
             .format(interaction.user.name))
 
