@@ -37,8 +37,7 @@ class plrc(commands.Cog):
             else:
                 islandId = 5620237900
 
-            existing_file = xlsx_file
-            wb = load_workbook(existing_file)
+            wb = load_workbook(xlsx_file)
             ws = wb.active
 
             place = roblox.get_base_place(islandId)
@@ -52,7 +51,7 @@ class plrc(commands.Cog):
             for row in new_data:
                 ws.append(row)
 
-            wb.save(existing_file)
+            wb.save(xlsx_file)
 
 async def setup(bot):
     importlib.reload(settings)
