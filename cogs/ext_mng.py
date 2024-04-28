@@ -47,6 +47,8 @@ class exts(commands.Cog):
                 type = "cogs"
             elif ext == "command":
                 type = "commands"
+            elif ext == "plrc":
+                type = "playercounts"
             else:
                 await ctx.send(f"Unexpected type")
 

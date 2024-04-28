@@ -9,10 +9,12 @@ DISCORD_TOKEN = os.getenv("DiscordToken")
 ROBLOX_TOKEN = os.getenv("RobloxToken")
 
 BASE_DIR = pathlib.Path(__file__).parent
+HOME_DIR = pathlib.Path.home()
 
 CMD_DIR = BASE_DIR / "commands"
 COG_DIR = BASE_DIR / "cogs"
 PLRC_DIR = BASE_DIR / "playercounts"
+XLSX_DIR = HOME_DIR / "nw_stats"
 JSON_DIR = BASE_DIR / "verified.json"
 
 # Server IDs

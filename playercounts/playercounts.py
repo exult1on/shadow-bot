@@ -25,7 +25,7 @@ class plrc(commands.Cog):
 
     @tasks.loop(time=times)
     async def islandcounts(self):
-        for xlsx_file in settings.PLRC_DIR.glob('*.xlsx'):
+        for xlsx_file in settings.XLSX_DIR.glob('*.xlsx'):
             if xlsx_file.name == 'rupert.xlsx':
                 islandId = 5465507265
             elif xlsx_file.name == 'cantermagne.xlsx':
