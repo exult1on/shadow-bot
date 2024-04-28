@@ -57,5 +57,11 @@ async def on_ready():
         if cmd_file.name != "__init__.py":
             await bot.load_extension(f"commands.{cmd_file.name[:-3]}")
             print(f"{cmd_file.name} loaded")
+    
+    # Loading playercount on boot
+    for plrc_file in settings.PLRC_DIR.glob("*.py"):
+        if plrc_file.name != "__init__.py":
+            await bot.load_extension(f"playercounts.{plrc_file.name[:-3]}")
+            print(f"{plrc_file.name} loaded")
 
 bot.run(settings.DISCORD_TOKEN)

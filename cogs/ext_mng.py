@@ -18,6 +18,8 @@ class exts(commands.Cog):
             type = "cogs"
         elif ext == "command":
             type = "commands"
+        elif ext == "plrc":
+            type = "playercounts"
         else:
             await ctx.send(f"Unexpected type")
 
@@ -55,7 +57,7 @@ class exts(commands.Cog):
 
             except commands.ExtensionNotLoaded:
                 await ctx.send(f"The {command} {ext} is not loaded")
-        
+
 async def setup(bot):
     importlib.reload(settings)
     await bot.add_cog(exts(bot))
