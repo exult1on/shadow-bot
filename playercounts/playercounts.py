@@ -23,7 +23,6 @@ class plrc(commands.Cog):
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot
-        self.islandcounts.start()
 
     @tasks.loop(time=times)
     async def islandcounts(self):
@@ -57,4 +56,5 @@ class plrc(commands.Cog):
 
 async def setup(bot):
     importlib.reload(settings)
+    plrc.islandcounts.start()
     await bot.add_cog(plrc(bot))
