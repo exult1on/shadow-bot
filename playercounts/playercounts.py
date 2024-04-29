@@ -10,11 +10,13 @@ utc = datetime.timezone.utc
 
 times = [
     datetime.time(hour=0, tzinfo=utc),
-    datetime.time(hour=4, tzinfo=utc),
-    datetime.time(hour=8, tzinfo=utc),
+    datetime.time(hour=3, tzinfo=utc),
+    datetime.time(hour=6, tzinfo=utc),
+    datetime.time(hour=9, tzinfo=utc),
     datetime.time(hour=12, tzinfo=utc),
-    datetime.time(hour=16, tzinfo=utc),
-    datetime.time(hour=20, tzinfo=utc)
+    datetime.time(hour=15, tzinfo=utc),
+    datetime.time(hour=18, tzinfo=utc),
+    datetime.time(hour=21, tzinfo=utc)
 ]
 
 class plrc(commands.Cog):
