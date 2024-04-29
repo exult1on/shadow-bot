@@ -28,7 +28,7 @@ class plrc(commands.Cog):
         for xlsx_file in settings.XLSX_DIR.glob('*.xlsx'):
             if xlsx_file.name == 'rupert.xlsx':
                 islandId = 5465507265
-            elif xlsx_file.name == 'cantermagne.xlsx':
+            elif xlsx_file.name == 'canter.xlsx':
                 islandId = 5620237741
             elif xlsx_file.name == 'stonemore.xlsx':
                 islandId = 6249721735
