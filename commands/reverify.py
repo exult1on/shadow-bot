@@ -1,4 +1,5 @@
 import json
+import checks
 import discord
 import settings
 import importlib
@@ -49,13 +50,13 @@ class reverify(commands.Cog):
     
     @app_commands.command(name = "reverify", description = "Reverify a user with their Roblox account")
     @app_commands.guilds(settings.ServerID)
-    @app_commands.checks.has_role(settings.role_admin)
+    @checks.app_check_any(app_commands.checks.has_role(settings.role_admin), app_commands.checks.has_permissions(administrator=True))
     @app_commands.describe(user = "The user to request a reverify on")
     async def reverify_command(self, interaction: discord.Interaction, user: discord.Member = None):
         await reverify.reverify(self, interaction, user)
 
     @app_commands.guilds(settings.ServerID)
-    @app_commands.checks.has_role(settings.role_admin)
+    @checks.app_check_any(app_commands.checks.has_role(settings.role_admin), app_commands.checks.has_permissions(administrator=True))
     async def reverify_context_user(self, interaction: discord.Interaction, user: discord.Member):
         await reverify.reverify(self, interaction, user)
 

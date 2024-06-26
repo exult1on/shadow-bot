@@ -1,4 +1,5 @@
 import json
+import checks
 import discord
 import settings
 import importlib
@@ -69,18 +70,18 @@ class accept(commands.Cog):
 
     @app_commands.command(name = "accept", description = "Accept a verified user into the group")
     @app_commands.guilds(settings.ServerID)
-    @app_commands.checks.has_role(settings.role_admin)
+    @checks.app_check_any(app_commands.checks.has_role(settings.role_admin), app_commands.checks.has_permissions(administrator=True))
     @app_commands.describe(user = "The user to accept")
     async def accept_command(self, interaction: discord.Interaction, user: discord.Member):
         await accept.accept(self, interaction, user, None)
 
     @app_commands.guilds(settings.ServerID)
-    @app_commands.checks.has_role(settings.role_admin)
+    @checks.app_check_any(app_commands.checks.has_role(settings.role_admin), app_commands.checks.has_permissions(administrator=True))
     async def accept_context_user(self, interaction: discord.Interaction, user: discord.Member):
         await accept.accept(self, interaction, user, None)
 
     @app_commands.guilds(settings.ServerID)
-    @app_commands.checks.has_role(settings.role_admin)
+    @checks.app_check_any(app_commands.checks.has_role(settings.role_admin), app_commands.checks.has_permissions(administrator=True))
     async def accept_context_message(self, interaction: discord.Interaction, message: discord.Message):
         await accept.accept(self, interaction, message.author, message)
 

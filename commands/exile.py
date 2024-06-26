@@ -1,4 +1,5 @@
 import json
+import checks
 import discord
 import settings
 import importlib
@@ -55,13 +56,13 @@ class exile(commands.Cog):
 
     @app_commands.command(name = "exile", description = "Exile a user from the group")
     @app_commands.guilds(settings.ServerID)
-    @app_commands.checks.has_role(settings.role_admin)
+    @checks.app_check_any(app_commands.checks.has_role(settings.role_admin), app_commands.checks.has_permissions(administrator=True))
     @app_commands.describe(user = "The user to exile", roblox_username = "The Roblox account to exile from the group")
     async def exile_command(self, interaction: discord.Interaction, user: discord.Member = None, roblox_username: str = None):
         await exile.exile(self, interaction, user, roblox_username)
 
     @app_commands.guilds(settings.ServerID)
-    @app_commands.checks.has_role(settings.role_admin)
+    @checks.app_check_any(app_commands.checks.has_role(settings.role_admin), app_commands.checks.has_permissions(administrator=True))
     async def exile_context_user(self, interaction: discord.Interaction, user: discord.Member):
         await exile.exile(self, interaction, user, None)
 
